@@ -18,7 +18,6 @@ void main() {
     enable_interrupts();
 
     init_keyboard();
-    init_timer(50);
     
     if(add_keyboard_callback(&shell_key_callback)<0){
         shell_print("Failed to add a keyboard callback\n");
@@ -26,6 +25,7 @@ void main() {
 
     // PIT (tick callback) test
     /*
+    init_timer(50);
     if(add_tick_callback(&tick_fun)<0){
         shell_print("Failed to add a tick callback\n");
     }
