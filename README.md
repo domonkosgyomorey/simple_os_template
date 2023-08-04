@@ -45,7 +45,7 @@ __Shell supperted commands:__
 | Command | Arguments count | Desclription
 | :--- | :---: | :--- |
 | `echo` | 1 | print the 1st argument on the screen |
-| `ls` | 0 | print not implemented yet |
+| `ls` | 0 | print "not implemented yet" |
 | `exit` | 0 | halt the whole OS |
 
 
