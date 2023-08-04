@@ -2,13 +2,13 @@
 ## Description
 A little abstracted 32bit OS template with some function.
 
-This repo is help me to develop some custom OS stuff. Example a game or something.
+This repo is help me to develop some custom OS stuff. Example a game or something else.
 
 But I would like to expand this project a modular way, so I can put moduls what I need in a sertain project.
 
-_This repo is not an OS dev tutorial, just my personal experiace with this topic. If you want to learn more on these pls look the link below in the referencies section._
+_This repo is not an OS dev tutorial, just my personal experiace with this topic. If you want to learn more on these pls look the link below in the [referencies](#referencies) section._
 
-## Specification
+## Tested on these
 I wrote this OS on Linux (Debian)<br>
 My machine is x86_64<br>
 I was not tested on other OS or hardwares
@@ -23,15 +23,16 @@ I was not tested on other OS or hardwares
 - [GNU make](https://www.gnu.org/software/make/)
 
 ## Some features
+- Very basic memory protection (GDT with flat model)
 - Interaction with hardware throught IO ports
-- Basic libc lib, with some function
+- Basic libc, with some function
 - Basic keyboard handling with callback abstraction
 - VGA Text graphics ( 80x25 )
 - It has a timer and its own callback which invoke when the PIT "clock"
 - Callbacks for interrupt exceptions
 - It build a modular way for separation the backend
-- Has a separated shell
 - The main kernel when you can initialize that you need
+- A basic separated shell (a bit buggy yet).
 
 ## How to compile and run
 Just compile:
