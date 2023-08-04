@@ -9,7 +9,7 @@ int get_offset(int col, int row);
 int get_offset_row(int offset);
 int get_offset_col(int offset);
 
-void vga8025_print_at(char *message, int col, int row) {
+void vga8025_print_at(const char *message, int col, int row) {
     int offset;
     if (col>=0&&row>=0){
         offset = get_offset(col, row);
@@ -27,7 +27,7 @@ void vga8025_print_at(char *message, int col, int row) {
     }
 }
 
-void vga8025_print(char *message) {
+void vga8025_print(const char *message) {
     vga8025_print_at(message, -1, -1);
 }
 

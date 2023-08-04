@@ -5,16 +5,21 @@
 #include "../libc/stdlib.h"
 #include "shell.h"
 
+#define CMD_MAX_SIZE 10
+#define ARG_MAX_SIZE 25
+
 static char key_buffer[MAX_C_PER_LINE];
 u8 line_len = 0;
 
-const char* shell_commands[] = {
-    "ECHO"
-};
 typedef enum shell_command{
     SHELL_CMD_ECHO = 0,
     SHELL_CMD_COUNT
 }shell_command;
+
+const char shell_commands[][CMD_MAX_SIZE] = {
+    "ECHO",
+    "LS"
+};
 
 void shell_print(s8* msg){
     vga8025_print(msg);
@@ -22,10 +27,12 @@ void shell_print(s8* msg){
 
 void shell_key_callback(u8 letter, u8 scancode, const char* name) {
     if (scancode > SCANCODE_MAX ) return;
-    if (scancode == BACKSPACE ) {
-        str_backspace(key_buffer);
-        vga8025_print_backspace();
-        --line_len;
+    if (scancode == BACKSPACE) {
+        if(str_len(key_buffer)!=0){
+            str_backspace(key_buffer);
+            vga8025_print_backspace();
+            --line_len;
+        }
     } else if(line_len == MAX_C_PER_LINE-1){
         return;
     } else if (scancode == ENTER) {
@@ -44,9 +51,13 @@ void shell_key_callback(u8 letter, u8 scancode, const char* name) {
 }
 
 void shell_command_handler(s8* msg){
-    if(str_n_equ(msg, shell_commands[SHELL_CMD_ECHO], 4)){
+    char command[CMD_MAX_SIZE];
+    char first_arg[ARG_MAX_SIZE];
+    str_cut_word_n(msg, command, CMD_MAX_SIZE);
+    str_cut_word_n(msg, first_arg, ARG_MAX_SIZE);
+    if(str_equ(command, shell_commands[SHELL_CMD_ECHO])){
         vga8025_print("ECHO: ");
-        vga8025_print(msg);
+        vga8025_print(first_arg);
         vga8025_print("\n");
     }
 }

@@ -24,7 +24,24 @@ void main() {
     }
 
     char* text = "    This is a text";
+    char text_cpy[100];
+    str_cpy(text, text_cpy);
     str_trim(text);
     shell_print(text);
+    shell_print("\n");
+    shell_print(text_cpy);
+    shell_print("\n");
+
+    str_cpy(text_cpy, text);
+    char arg[25];
+    str_cut_word(text_cpy, arg);
+    shell_print(text_cpy);
+    shell_print("\n");
+    shell_print(arg);
+    shell_print("\n");
+    str_cut_word(text_cpy, arg);
+    shell_print(text_cpy);
+    shell_print("\n");
+    shell_print(arg);
     shell_print("\n");
 }

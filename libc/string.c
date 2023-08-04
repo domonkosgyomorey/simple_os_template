@@ -38,9 +38,10 @@ void str_append(char* cstr, const char n) {
 
 void str_backspace(char* cstr) {
     int len = str_len(cstr);
-    cstr[len-1] = '\0';
+    if(len!=0){
+        cstr[len-1] = '\0';
+    }
 }
-
 int str_cmp(const char* cstr1, const char* cstr2) {
     int i;
     for (i = 0; cstr1[i] == cstr2[i]; i++) {
@@ -57,18 +58,16 @@ int str_equ(const char* cstr1, const char* cstr2){
     return cstr1[i]==cstr2[i];
 }
 
-int str_n_cmp(const char* cstr1, const char* cstr2, int n){
-    if(n<1)return 0;
-    int i;
+int str_n_cmp(const char* cstr1, const char* cstr2, unsigned int n){
+    unsigned int i;
     for (i = 0; i<n-1 && cstr1[i] == cstr2[i]; i++) {
         if (cstr1[i] == '\0') return 0;
     }
     return cstr1[i] - cstr2[i];
 }
 
-int str_n_equ(const char* cstr1, const char* cstr2, int n){
-    if(n<1)return 0;
-    int i = 0;
+int str_n_equ(const char* cstr1, const char* cstr2, unsigned int n){
+    unsigned int i = 0;
     while(i<n-1&&cstr1[i]!='\0'&&cstr2[i]!='\0'&&cstr1[i]==cstr2[i]){
         ++i;
     }
@@ -98,4 +97,44 @@ void str_trim(char* cstr){
         ++i;
     }
     cstr[j] = cstr[i];
+}
+
+void str_cpy(const char* cstr1, char* cstr2){
+    int i = 0;
+    while(cstr1[i]!='\0'){
+        cstr2[i]=cstr1[i];
+        ++i;
+    }
+    cstr2[i]='\0';
+}
+
+void str_n_cpy(const char* cstr1, char* cstr2, unsigned int n){
+    unsigned int i = 0;
+    while(cstr1[i]!='\0'&&i<n-1){
+        cstr2[i]=cstr1[i];
+        ++i;
+    }
+    cstr2[i]='\0';
+}
+
+void str_cut_word(char* cstr1, char* cstr2){
+    str_trim(cstr1);
+    int i = 0;
+    while(cstr1[i]!='\0'&&cstr1[i]!=' '){
+        cstr2[i] = cstr1[i];
+        ++i;
+    }
+    str_cpy(cstr1+i, cstr1);
+    cstr2[i] = '\0';
+}
+
+void str_cut_word_n(char* cstr1, char* cstr2, unsigned int n){
+    str_trim(cstr1);
+    unsigned int i = 0;
+    while(cstr1[i]!='\0'&&cstr1[i]!=' '&&i<n-1){
+        cstr2[i] = cstr1[i];
+        ++i;
+    }
+    str_cpy(cstr1+i, cstr1);
+    cstr2[i] = '\0';
 }

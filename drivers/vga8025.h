@@ -13,8 +13,8 @@
 #define REG_SCREEN_DATA 0x3D5
 
 void vga8025_clear_screen();
-void vga8025_print_at(char *message, int col, int row);
-void vga8025_print(char *message);
+void vga8025_print_at(const char *message, int col, int row);
+void vga8025_print(const char *message);
 void vga8025_print_backspace();
 
 #endif
