@@ -3,8 +3,10 @@ HEADERS = $(wildcard kernel/*.h drivers/*.h x86_64/*.h libc/*.h shell/*.h)
 OBJ = ${C_SOURCES:.c=.o x86_64/interrupt.o} 
 
 CC = gcc
-CFLAGS = -g -m32 -nostdlib -nostdinc -fno-builtin -fno-stack-protector -nostartfiles -nodefaultlibs \
-		 -Wall -Wextra -Werror -no-pie -fno-pic
+CFLAGS = -m32 -nostdlib -nostdinc -fno-builtin -O2 -pipe  \
+		 -Wall -Wextra -Werror -fno-pic \
+		 -Werror=implicit-function-declaration -Wl,-z,defs \
+		 -fcf-protection -nostartfiles -nodefaultlibs
 
 os_img: boot/boot_main.bin kernel.bin
 	cat $^ > os_img
