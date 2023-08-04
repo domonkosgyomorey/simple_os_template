@@ -1,4 +1,6 @@
 # Simple 32bit OS template
+<br>
+
 ## Description
 A little abstracted 32bit OS template with some function.
 
@@ -8,17 +10,16 @@ But I would like to expand this project a modular way, so I can put moduls what 
 
 _(By the way. This is my first real OS dev repo, so do not judge me for some stupid mistake, I am in the learning process in this topic yet.)_
 
-Attension !<br>
+>__Warning!__<br>
 In the x86_64 folder has the hardware specific code<br>
 For whos want run this code on other platform
 
-_This repo is not an OS dev tutorial, just my personal experiace with this topic. If you want to learn more on these pls look the link below in the [referencies](#referencies) section._
+This repo is not an OS dev tutorial, just my personal experiace with this topic. If you want to learn more on these pls look the link below in the [referencies](#referencies) section._
 
 ## Tested on these
-I wrote this OS on Linux (Debian)<br>
+Linux (Debian)<br>
 My machine is x86_64<br>
 I was not tested on other OS or hardwares
-
 
 ## Dependencies
 ( At least for my Makefile )
@@ -44,15 +45,15 @@ Probably in the future, I try put this OS in a docker env.
 
 ## How to compile and run
 Just compile:
-```console
+```shell
 make
 ```
 Compile and run:
-```console
+```shell
 make run
 ```
 Clean all the bin file, except os_img:
-```console
+```shell
 make clean
 ```
 ## Shell preview
