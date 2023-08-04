@@ -23,7 +23,7 @@ void shell_print(s8* msg){
 void shell_key_callback(u8 letter, u8 scancode, const char* name) {
     if (scancode > SCANCODE_MAX ) return;
     if (scancode == BACKSPACE ) {
-        backspace(key_buffer);
+        str_backspace(key_buffer);
         vga8025_print_backspace();
         --line_len;
     } else if(line_len == MAX_C_PER_LINE-1){
@@ -36,7 +36,7 @@ void shell_key_callback(u8 letter, u8 scancode, const char* name) {
         line_len=0;
     } else {
         char str[2] = {letter, '\0'};
-        append(key_buffer, letter);
+        str_append(key_buffer, letter);
         vga8025_print(str);
         ++line_len;
     }
@@ -44,7 +44,7 @@ void shell_key_callback(u8 letter, u8 scancode, const char* name) {
 }
 
 void shell_command_handler(s8* msg){
-    if(strnequ(msg, shell_commands[SHELL_CMD_ECHO], 4)){
+    if(str_n_equ(msg, shell_commands[SHELL_CMD_ECHO], 4)){
         vga8025_print("ECHO: ");
         vga8025_print(msg);
         vga8025_print("\n");

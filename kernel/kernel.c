@@ -7,7 +7,7 @@
 void tick_fun(u32 n){
     char t[6];
     int_to_ascii(n, t);
-    int i = strlen(t);
+    int i = str_len(t);
     t[i] = '\n';
     t[i+1] = '\0';
     shell_print(t);
@@ -24,7 +24,7 @@ void main() {
     }
 
     char* text = "    This is a text";
-    strtrim(text);
+    str_trim(text);
     shell_print(text);
     shell_print("\n");
 }
