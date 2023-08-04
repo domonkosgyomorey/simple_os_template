@@ -23,14 +23,4 @@ void main() {
         shell_print("Failed to add a keyboard callback\n");
     }
     
-    char* text = "This is a kernel text for testing.";
-    char db[10];
-    int_to_ascii(strcountc(text, ' '), db);
-    shell_print(db);
-    shell_print("\n");
-    
-    if(add_tick_callback(tick_fun)<0){
-        shell_print("Failed to add a tick callback\n");
-    }
-    
 }

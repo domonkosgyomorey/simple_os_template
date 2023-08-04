@@ -38,7 +38,7 @@ Clean all the bin file, except os_img:
 make clean
 ```
 ## Shell preview
-![]()
+![Shell preview](./img/preview.jpg)
 
 ## Referencies
 - [A little book about os](https://littleosbook.github.io/)
