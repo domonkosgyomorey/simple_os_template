@@ -22,5 +22,9 @@ void main() {
     if(add_keyboard_callback(&shell_key_callback)<0){
         shell_print("Failed to add a keyboard callback\n");
     }
-    
+
+    char* text = "    This is a text";
+    strtrim(text);
+    shell_print(text);
+    shell_print("\n");
 }
