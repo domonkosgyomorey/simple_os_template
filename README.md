@@ -6,6 +6,8 @@ This repo is help me to develop some custom OS stuff. Example a game or somethin
 
 But I would like to expand this project a modular way, so I can put moduls what I need in a sertain project.
 
+_(By the way. This is my first real OS dev repo, so do not judge me for some stupid mistake, I am in the learning process in this topic yet.)_
+
 Attension !<br>
 In the x86_64 folder has the hardware specific code<br>
 For whos want run this code on other platform
