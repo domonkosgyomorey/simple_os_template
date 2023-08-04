@@ -72,5 +72,9 @@ void shell_command_handler(s8* msg){
     }else if(str_equ(command, shell_commands[SHELL_CMD_EXIT])){
         vga8025_print("EXIT: BYE");
         asm volatile("hlt");
+    }else{
+        vga8025_print(command);
+        vga8025_print(" command does not supported.");
+        vga8025_print("\n");
     }
 }
