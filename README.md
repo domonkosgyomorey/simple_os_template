@@ -1,9 +1,18 @@
 # Simple 32bit OS template
 ## Description
-A little abstracted 32bit OS template with some function
+A little abstracted 32bit OS template with some function.
+
+This repo is help me to develop some custom OS stuff. Example a game or something.
+
+But I would like to expand this project a modular way, so I can put moduls what I need in a sertain project.
+
+_This repo is not an OS dev tutorial, just my personal experiace with this topic. If you want to learn more on these pls look the link below in the referencies section._
 
 ## Specification
-I wrote this OS on Linux (Debian)
+I wrote this OS on Linux (Debian)<br>
+My machine is x86_64<br>
+I was not tested on other OS or hardwares
+
 
 ## Dependencies
 ( At least for my Makefile )
@@ -13,7 +22,7 @@ I wrote this OS on Linux (Debian)
 - hardware emulation: [qemu](https://www.qemu.org/)
 - [GNU make](https://www.gnu.org/software/make/)
 
-## What it can do?
+## Some features
 - Interaction with hardware throught IO ports
 - Basic libc lib, with some function
 - Basic keyboard handling with callback abstraction
