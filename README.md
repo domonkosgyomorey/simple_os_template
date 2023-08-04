@@ -40,6 +40,8 @@ I was not tested on other OS or hardwares
 - The main kernel when you can initialize that you need
 - A basic separated shell (a bit buggy yet).
 
+Probably in the future, I try put this OS in a docker env.
+
 ## How to compile and run
 Just compile:
 ```console
