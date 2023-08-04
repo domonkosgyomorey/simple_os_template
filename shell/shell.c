@@ -5,19 +5,8 @@
 #include "../libc/stdlib.h"
 #include "shell.h"
 
-#define CMD_MAX_SIZE 10
-#define ARG_MAX_SIZE 25
-#define MAX_ARGS_NUM 10
-
 static char key_buffer[MAX_C_PER_LINE];
 u8 line_len = 0;
-
-typedef enum shell_command{
-    SHELL_CMD_ECHO = 0,
-    SHELL_CMD_LS,
-    SHELL_CMD_EXIT,
-    SHELL_CMD_COUNT
-}shell_command;
 
 const char shell_commands[][CMD_MAX_SIZE] = {
     "ECHO",
