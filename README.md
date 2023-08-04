@@ -42,11 +42,11 @@ I was not tested on other OS or hardwares
 - A basic separated shell (a bit buggy yet).
 
 __Shell supperted commands:__
-| Command | Arguments count | Desclription
-| :--- | :---: | :--- |
-| `echo` | 1 | print the 1st argument on the screen |
-| `ls` | 0 | print "not implemented yet" |
-| `exit` | 0 | halt the whole OS |
+| Command   | Arguments count   | Desclription                          |
+| :---      | :---:             | :---                                  |
+| `echo`    | 1                 | print the 1st argument on the screen  |
+| `ls`      | 0                 | print "not implemented yet"           |
+| `exit`    | 0                 | halt the whole OS                     |
 
 
 Probably in the future, I try put this OS in a docker env.
