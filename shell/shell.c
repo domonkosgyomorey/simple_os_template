@@ -7,18 +7,22 @@
 
 #define CMD_MAX_SIZE 10
 #define ARG_MAX_SIZE 25
+#define MAX_ARGS_NUM 10
 
 static char key_buffer[MAX_C_PER_LINE];
 u8 line_len = 0;
 
 typedef enum shell_command{
     SHELL_CMD_ECHO = 0,
+    SHELL_CMD_LS,
+    SHELL_CMD_EXIT,
     SHELL_CMD_COUNT
 }shell_command;
 
 const char shell_commands[][CMD_MAX_SIZE] = {
     "ECHO",
-    "LS"
+    "LS",
+    "EXIT",
 };
 
 void shell_print(s8* msg){
@@ -52,12 +56,21 @@ void shell_key_callback(u8 letter, u8 scancode, const char* name) {
 
 void shell_command_handler(s8* msg){
     char command[CMD_MAX_SIZE];
-    char first_arg[ARG_MAX_SIZE];
+    char args[MAX_ARGS_NUM][ARG_MAX_SIZE];
     str_cut_word_n(msg, command, CMD_MAX_SIZE);
-    str_cut_word_n(msg, first_arg, ARG_MAX_SIZE);
+    int i = 0;
+    do{
+        str_cut_word_n(msg, args[i], ARG_MAX_SIZE);
+    }while(str_len(args[i++])!=0);
     if(str_equ(command, shell_commands[SHELL_CMD_ECHO])){
         vga8025_print("ECHO: ");
-        vga8025_print(first_arg);
+        vga8025_print(args[0]);
         vga8025_print("\n");
+    }else if(str_equ(command, shell_commands[SHELL_CMD_LS])){
+        vga8025_print("LS: NOT IMPLEMENTED YET");
+        vga8025_print("\n");
+    }else if(str_equ(command, shell_commands[SHELL_CMD_EXIT])){
+        vga8025_print("EXIT: BYE");
+        asm volatile("hlt");
     }
 }

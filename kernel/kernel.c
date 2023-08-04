@@ -44,4 +44,6 @@ void main() {
     shell_print("\n");
     shell_print(arg);
     shell_print("\n");
+
+    shell_print("# ");
 }
