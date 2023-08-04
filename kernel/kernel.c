@@ -4,7 +4,7 @@
 #include "../x86_64/timer.h"
 #include "../libc/string.h"
 
-void tick_fun(u32 n){
+void tick_fun(int n){
     char t[6];
     int_to_ascii(n, t);
     int i = str_len(t);
@@ -19,31 +19,17 @@ void main() {
 
     init_keyboard();
     init_timer(50);
+    
     if(add_keyboard_callback(&shell_key_callback)<0){
         shell_print("Failed to add a keyboard callback\n");
     }
 
-    char* text = "    This is a text";
-    char text_cpy[100];
-    str_cpy(text, text_cpy);
-    str_trim(text);
-    shell_print(text);
-    shell_print("\n");
-    shell_print(text_cpy);
-    shell_print("\n");
-
-    str_cpy(text_cpy, text);
-    char arg[25];
-    str_cut_word(text_cpy, arg);
-    shell_print(text_cpy);
-    shell_print("\n");
-    shell_print(arg);
-    shell_print("\n");
-    str_cut_word(text_cpy, arg);
-    shell_print(text_cpy);
-    shell_print("\n");
-    shell_print(arg);
-    shell_print("\n");
+    // PIT (tick callback) test
+    /*
+    if(add_tick_callback(&tick_fun)<0){
+        shell_print("Failed to add a tick callback\n");
+    }
+    */
 
     shell_print("# ");
 }
