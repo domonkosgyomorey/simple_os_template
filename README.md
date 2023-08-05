@@ -86,6 +86,7 @@ make clean
 ## Shell preview
 ![Shell preview](./img/preview2.1.jpg)
 ## Graphics preview
+### formula in C syntax :)<br>" ~(i&j)-frames "
 ![Graphics preview](./img/graphics_preview1.jpg)
 
 ## Referencies
