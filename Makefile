@@ -3,7 +3,7 @@ HEADERS = $(wildcard kernel/*.h drivers/*.h hdep/*.h libc/*.h shell/*.h)
 OBJ = ${C_SOURCES:.c=.o hdep/interrupt.o} 
 
 CC = gcc
-CFLAGS = -m32 -nostdlib -nostdinc -fno-builtin -O2 -pipe  \
+CFLAGS = -m32 -nostdlib -nostdinc -fno-builtin -pipe  \
 		 -Wall -Wextra -Werror -fno-pic \
 		 -Werror=implicit-function-declaration -Wl,-z,defs \
 		 -fcf-protection -nostartfiles -nodefaultlibs
@@ -31,4 +31,4 @@ run: os_img
 
 clean:
 	rm -rf *.bin *.dis *.o *.elf
-	rm -rf kernel/*.o boot/*.bin drivers/*.o boot/*.o cpu/*.o libc/*.o shell/*.o
+	rm -rf kernel/*.o boot/*.bin drivers/*.o boot/*.o hdep/*.o libc/*.o shell/*.o
