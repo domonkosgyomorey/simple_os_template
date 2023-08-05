@@ -44,7 +44,7 @@ I was not tested on other OS or hardwares
 __Shell supperted commands:__
 | Command           | Arguments count   | Description                           |
 | :---              | :---:             | :---                                  |
-| `echo`            | 1                 | print the 1st argument on the screen  |
+| `echo`            | 1                 | print the 1st argument onto the screen|
 | `ls`              | 0                 | print "not implemented yet"           |
 | `exit`            | 0                 | halt the whole OS                     |
 | `clear`           | 0                 | clear the screen                      |
