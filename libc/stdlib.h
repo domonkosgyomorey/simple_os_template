@@ -3,8 +3,8 @@
 
 #include "../x86_64/types.h"
 
-void memncpy(int *source, int *dest, int nbytes);
-void memset(int *dest, int val, int len);
+void memncpy(void *source, void *dest, int nbytes);
+void memset(void *dest, int val, int len);
 
 
 #endif // STDLIB_H
