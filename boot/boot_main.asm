@@ -1,5 +1,11 @@
 [org 0x7c00]
 
+    mov ah, 0x0                     ; graphicsal settings
+    mov al, 0x13                     ; 0x13 for gaphics mode and 0x2 for text mode
+
+    mov [GRAPHICS_MODE], al         ; save graphics mode for later
+    int 0x10                        ; change graphics
+
     KERNEL_OFFSET equ 0x1000
 
     mov [BOOT_DRIVE], dl
@@ -31,6 +37,7 @@ init_protected_mode:
     mov ebp, 0x90000
     mov esp, ebp
 
+    mov eax, [GRAPHICS_MODE]
     call KERNEL_OFFSET
     jmp $
 
@@ -39,6 +46,7 @@ init_protected_mode:
 %include "boot/gdt.asm"
 
 BOOT_DRIVE db 0
+GRAPHICS_MODE db 0
 
 times 510 - ($-$$) db 0
 dw 0xaa55

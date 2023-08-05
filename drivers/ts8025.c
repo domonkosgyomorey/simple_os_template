@@ -1,15 +1,15 @@
-#include "vga8025.h"
+#include "ts8025.h"
 #include "../hdep/ports.h"
 #include "../libc/stdlib.h"
 
 int get_cursor_offset();
 void set_cursor_offset(int offset);
-int vga8025_print_char(char c, int col, int row, char attr);
+int ts8025_print_char(char c, int col, int row, char attr);
 int get_offset(int col, int row);
 int get_offset_row(int offset);
 int get_offset_col(int offset);
 
-void vga8025_print_at(const char *message, int col, int row) {
+void ts8025_print_at(const char *message, int col, int row) {
     int offset;
     if (col>=0&&row>=0){
         offset = get_offset(col, row);
@@ -21,25 +21,25 @@ void vga8025_print_at(const char *message, int col, int row) {
 
     int i = 0;
     while (message[i]!=0) {
-        offset = vga8025_print_char(message[i++], col, row, WHITE_ON_BLACK);
+        offset = ts8025_print_char(message[i++], col, row, WHITE_ON_BLACK);
         row = get_offset_row(offset);
         col = get_offset_col(offset);
     }
 }
 
-void vga8025_print(const char *message) {
-    vga8025_print_at(message, -1, -1);
+void ts8025_print(const char *message) {
+    ts8025_print_at(message, -1, -1);
 }
 
-void vga8025_print_backspace() {
+void ts8025_print_backspace() {
     int offset = get_cursor_offset()-2;
     int row = get_offset_row(offset);
     int col = get_offset_col(offset);
-    vga8025_print_char(VGA_BACKSPACE, col, row, WHITE_ON_BLACK);
+    ts8025_print_char(VGA_BACKSPACE, col, row, WHITE_ON_BLACK);
 }
 
 
-int vga8025_print_char(char c, int col, int row, char attr) {
+int ts8025_print_char(char c, int col, int row, char attr) {
     u8* vidmem = (u8*) VIDEO_ADDRESS;
     if (!attr) attr = WHITE_ON_BLACK;
 
@@ -98,7 +98,7 @@ void set_cursor_offset(int offset) {
     outb(REG_SCREEN_DATA, (u8)(offset & 0xff));
 }
 
-void vga8025_clear_screen() {
+void ts8025_clear_screen() {
     int screen_size = MAX_COLS * MAX_ROWS;
     int i;
     u8* screen = (u8*) VIDEO_ADDRESS;

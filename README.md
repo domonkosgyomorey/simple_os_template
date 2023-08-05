@@ -39,7 +39,23 @@ I was not tested on other OS or hardwares
 - Callbacks for interrupt exceptions
 - It build a modular way for separation the backend
 - The main kernel when you can initialize that you need
-- A basic separated shell (a bit buggy yet).
+- A basic separated shell
+- A bit goofy way to toggle graphics mode at running
+- A basic vga 13h mode graphics driver
+- __If you want to toggle the graphics mode option, you need to hardcode in the boot_main.asm file. Here:__
+```js
+[org 0x7c00]
+
+    mov ah, 0x0                     ; graphicsal settings
+
+    ; 0x13 for gaphics mode and 0x2 for text mode
+    mov al, 0x13                    
+
+    mov [GRAPHICS_MODE], al         ; save graphics mode for later
+    int 0x10                        ; change graphics
+
+    KERNEL_OFFSET equ 0x1000
+```
 
 __Shell supperted commands:__
 | Command           | Arguments count   | Description                           |
@@ -69,6 +85,8 @@ make clean
 ```
 ## Shell preview
 ![Shell preview](./img/preview2.1.jpg)
+## Graphics preview
+![Graphics preview](./img/graphics_preview1.jpg)
 
 ## Referencies
 - [A little book about os](https://littleosbook.github.io/)

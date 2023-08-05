@@ -11,6 +11,6 @@ void memncpy(void *source, void *dest, int nbytes) {
 }
 
 void memset(void *dest, int val, int len) {
-    int *temp = dest;
+    char *temp = dest;
     for ( ; len != 0; len--) *temp++ = val;
 }

@@ -1,5 +1,5 @@
-#ifndef SCREEN_H
-#define SCREEN_H
+#ifndef TS8025_H
+#define TS8025_H
 
 #include "../hdep/types.h"
 
@@ -14,9 +14,9 @@
 #define REG_SCREEN_CTRL 0x3D4
 #define REG_SCREEN_DATA 0x3D5
 
-void vga8025_clear_screen();
-void vga8025_print_at(const char *message, int col, int row);
-void vga8025_print(const char *message);
-void vga8025_print_backspace();
+void ts8025_clear_screen();
+void ts8025_print_at(const char *message, int col, int row);
+void ts8025_print(const char *message);
+void ts8025_print_backspace();
 
-#endif
+#endif // TS8025_H
