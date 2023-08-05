@@ -12,7 +12,11 @@ const char shell_commands[][CMD_MAX_SIZE] = {
     "ECHO",
     "LS",
     "EXIT",
+    "CLEAR",
 };
+
+
+void shell_command_handler(s8* msg);
 
 void shell_print(s8* msg){
     vga8025_print(msg);
@@ -62,6 +66,8 @@ void shell_command_handler(s8* msg){
         vga8025_print("EXIT: BYE");
         asm volatile("hlt");
     }else if(!str_len(command)){
+    }else if(str_equ(command, shell_commands[SHELL_CMD_CLEAR])){
+        vga8025_clear_screen();
     }else{
         vga8025_print(command);
         vga8025_print(" command does not supported.");

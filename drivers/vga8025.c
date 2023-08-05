@@ -35,12 +35,12 @@ void vga8025_print_backspace() {
     int offset = get_cursor_offset()-2;
     int row = get_offset_row(offset);
     int col = get_offset_col(offset);
-    vga8025_print_char(0x08, col, row, WHITE_ON_BLACK);
+    vga8025_print_char(VGA_BACKSPACE, col, row, WHITE_ON_BLACK);
 }
 
 
 int vga8025_print_char(char c, int col, int row, char attr) {
-    u8 *vidmem = (u8*) VIDEO_ADDRESS;
+    u8* vidmem = (u8*) VIDEO_ADDRESS;
     if (!attr) attr = WHITE_ON_BLACK;
 
     if (col >= MAX_COLS || row >= MAX_ROWS) {
@@ -72,7 +72,7 @@ int vga8025_print_char(char c, int col, int row, char attr) {
                         (int*)(get_offset(0, i-1) + VIDEO_ADDRESS),
                         MAX_COLS * 2);
 
-        char *last_line = (char*) (get_offset(0, MAX_ROWS-1) + (u8*) VIDEO_ADDRESS);
+        char* last_line = (char*) (get_offset(0, MAX_ROWS-1) + (u8*) VIDEO_ADDRESS);
         for (i = 0; i < MAX_COLS * 2; i++) last_line[i] = 0;
 
         offset -= 2 * MAX_COLS;
@@ -101,7 +101,7 @@ void set_cursor_offset(int offset) {
 void vga8025_clear_screen() {
     int screen_size = MAX_COLS * MAX_ROWS;
     int i;
-    u8 *screen = (u8*) VIDEO_ADDRESS;
+    u8* screen = (u8*) VIDEO_ADDRESS;
 
     for (i = 0; i < screen_size; i++) {
         screen[i*2] = ' ';

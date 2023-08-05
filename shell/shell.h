@@ -11,11 +11,11 @@ typedef enum shell_command{
     SHELL_CMD_ECHO = 0,
     SHELL_CMD_LS,
     SHELL_CMD_EXIT,
+    SHELL_CMD_CLEAR,
     SHELL_CMD_COUNT
 }shell_command;
 
 void shell_key_callback(u8 letter, u8 scancode, const char* name);
 void shell_print(s8* msg);
-void shell_command_handler(s8* msg);
 
 #endif
