@@ -1,6 +1,6 @@
-C_SOURCES = $(wildcard kernel/*.c drivers/*.c x86_64/*.c libc/*.c shell/*.c)
-HEADERS = $(wildcard kernel/*.h drivers/*.h x86_64/*.h libc/*.h shell/*.h)
-OBJ = ${C_SOURCES:.c=.o x86_64/interrupt.o} 
+C_SOURCES = $(wildcard kernel/*.c drivers/*.c hdep/*.c libc/*.c shell/*.c)
+HEADERS = $(wildcard kernel/*.h drivers/*.h hdep/*.h libc/*.h shell/*.h)
+OBJ = ${C_SOURCES:.c=.o hdep/interrupt.o} 
 
 CC = gcc
 CFLAGS = -m32 -nostdlib -nostdinc -fno-builtin -O2 -pipe  \

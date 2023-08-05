@@ -11,7 +11,7 @@ But I would like to expand this project a modular way, so I can put moduls what 
 _(By the way. This is my first real OS dev repo, so do not judge me for some stupid mistake, I am in the learning process in this topic yet.)_
 
 >__Warning!__<br>
-In the x86_64 folder has the hardware specific code<br>
+In the hdep(hardware depend) folder has the hardware specific code<br>
 For whos want run this code on other platform
 
 __This repo is not an OS dev tutorial, just my personal experiace with this topic. If you want to learn more on these pls look the link below in the [referencies](#referencies) section.__

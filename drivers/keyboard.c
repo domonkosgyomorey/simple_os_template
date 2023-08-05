@@ -1,5 +1,5 @@
-#include "../x86_64/ports.h"
-#include "../x86_64/isr.h"
+#include "../hdep/ports.h"
+#include "../hdep/isr.h"
 #include "../libc/stdlib.h"
 #include "keyboard.h"
 

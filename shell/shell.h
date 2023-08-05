@@ -1,7 +1,7 @@
 #ifndef SHELL_H
 #define SHELL_H
 
-#include "../x86_64/types.h"
+#include "../hdep/types.h"
 
 #define CMD_MAX_SIZE 10
 #define ARG_MAX_SIZE 25

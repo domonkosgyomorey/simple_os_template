@@ -1,4 +1,4 @@
-#include "../x86_64/types.h"
+#include "../hdep/types.h"
 #include "stdlib.h"
 
 void memncpy(void *source, void *dest, int nbytes) {

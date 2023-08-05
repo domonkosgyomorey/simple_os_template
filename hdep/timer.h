@@ -13,7 +13,11 @@
 #define CLOCK_HZ            1193180
 
 typedef void (*tick_callback)(u32 tick);
-void init_timer(u32 freq);
-s8 add_tick_callback(tick_callback tick_cb);
+
+// Init PIT
+void pit_init_timer(u32 freq);
+
+// Add a callback function which invoke when the PIT tick
+s8 pit_add_tick_callback(tick_callback tick_cb);
 
 #endif

@@ -1,4 +1,5 @@
 [org 0x7c00]
+
 KERNEL_OFFSET equ 0x1000        ; The same one we used when linking the kernel
 
     mov [BOOT_DRIVE], dl        ; Remember that the BIOS sets us the boot drive in 'dl' on boot

@@ -1,5 +1,5 @@
 #include "vga8025.h"
-#include "../x86_64/ports.h"
+#include "../hdep/ports.h"
 #include "../libc/stdlib.h"
 
 int get_cursor_offset();

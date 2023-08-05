@@ -1,7 +1,7 @@
 #ifndef KEYBOARD_H
 #define KEYBOARD_H
 
-#include "../x86_64/types.h"
+#include "../hdep/types.h"
 
 #define MAX_KEYBOARD_CALLBACK   32
 #define ESCAPE                  0x1

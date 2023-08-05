@@ -1,4 +1,4 @@
-#include "../x86_64/types.h"
+#include "../hdep/types.h"
 #include "../drivers/keyboard.h"
 #include "../drivers/vga8025.h"
 #include "../libc/string.h"

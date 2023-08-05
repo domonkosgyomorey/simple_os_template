@@ -7,7 +7,7 @@ u32 tick = 0;
 tick_callback tick_callbacks[MAX_TICK_CALLBACK];
 u8 tick_callbacks_count = 0;
 
-s8 add_tick_callback(tick_callback tick_cb){
+s8 pit_add_tick_callback(tick_callback tick_cb){
     if(tick_callbacks_count<MAX_TICK_CALLBACK){
         tick_callbacks[tick_callbacks_count++] = tick_cb;
         return 1;
@@ -16,7 +16,7 @@ s8 add_tick_callback(tick_callback tick_cb){
     }
 }
 
-static void timer_callback(registers_t regs) {
+static void pit_timer_callback(registers_t regs) {
     tick++;
     for(int i = 0; i < tick_callbacks_count; ++i){
         tick_callbacks[i](tick);
@@ -24,8 +24,8 @@ static void timer_callback(registers_t regs) {
     (void)(regs);
 }
 
-void init_timer(u32 freq) {
-    register_interrupt_handler(IRQ0, timer_callback);
+void pit_init_timer(u32 freq) {
+    register_interrupt_handler(IRQ0, pit_timer_callback);
 
     u32 divisor = CLOCK_HZ / freq;
     u8 low  = (u8)(divisor & 0xFF);
@@ -34,4 +34,3 @@ void init_timer(u32 freq) {
     outb(PIT_CHANNEL0, low);
     outb(PIT_CHANNEL0, high);
 }
-

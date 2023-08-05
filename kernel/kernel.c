@@ -1,7 +1,7 @@
 #include "../shell/shell.h"
-#include "../x86_64/isr.h"
+#include "../hdep/isr.h"
 #include "../drivers/keyboard.h"
-#include "../x86_64/timer.h"
+#include "../hdep/timer.h"
 #include "../libc/string.h"
 
 void tick_fun(int n){
