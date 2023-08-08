@@ -42,6 +42,7 @@ I was not tested on other OS or hardwares
 - A basic separated shell
 - A bit goofy way to toggle graphics mode at running
 - A basic vga 13h mode graphics driver
+- A generic way to put your init function of the driver in the kernel initialization process
 - __If you want to toggle the graphics mode option, you need to hardcode in the boot_main.asm file. Here:__
 ```js
 [org 0x7c00]
@@ -69,6 +70,19 @@ __Shell supperted commands:__
 
 
 Probably in the future, I try put this OS in a docker env.
+
+## How to register your driver init function:
+```c
+// 1. You need to create a var to store your init function pointer
+// which type is kernel_init_fun_t
+// 2. and add your var the "_init_driver_attrib" attribute 
+_init_driver_attrib kernel_init_fun_t init_keyboard_t = &init_keyboard;
+
+// You need a function which is a kernel_init_fun_t type
+void init_keyboard() {
+   register_interrupt_handler(IRQ1, keyboard_handler_callback); 
+}
+```
 
 ## How to compile and run
 Just compile:
