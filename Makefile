@@ -3,19 +3,16 @@ HEADERS = $(wildcard kernel/*.h drivers/*.h hdep/*.h libc/*.h shell/*.h)
 OBJ = ${C_SOURCES:.c=.o hdep/interrupt.o} 
 
 CC = gcc
-CFLAGS = -m32 -nostdlib -nostdinc -fno-builtin -pipe  \
-		 -Wall -Wextra -Werror -fno-pic \
-		 -Werror=implicit-function-declaration -Wl,-z,defs \
-		 -fcf-protection -nostartfiles -nodefaultlibs
+CFLAGS = 	-m32 -nostdlib -nostdinc -fno-builtin -pipe  \
+			-Wall -Wextra -Werror -fno-pic \
+		 	-Werror=implicit-function-declaration \
+		 	-fcf-protection -nostartfiles -nodefaultlibs
 
 os_img: boot/boot_main.bin kernel.bin
 	cat $^ > os_img
 
 kernel.bin: boot/kernel_entry.o ${OBJ}
-	ld -m elf_i386	-o $@ -Ttext 0x1000 $^ --oformat binary
-
-kernel.elf: boot/kernel_entry.o ${OBJ}
-	ld -m elf_i386 -o $@ -Ttext 0x1000 $^ 
+	ld -m elf_i386 -Map=output.map --oformat binary -T linker.ld -o $@ $^ 
 
 run: os_img
 	qemu-system-i386 -fda os_img

@@ -11,11 +11,12 @@
 #define PIT_MODE_COMMAND    0x43
 
 #define CLOCK_HZ            1193180
+#define PIT_DEFAULT_FREQUENCY 30
 
 typedef void (*tick_callback)(u32 tick);
 
 // Init PIT
-void pit_init_timer(u32 freq);
+void pit_init_timer();
 
 // Add a callback function which invoke when the PIT tick
 s8 pit_add_tick_callback(tick_callback tick_cb);

@@ -2,6 +2,7 @@
 #include "idt.h"
 #include "ports.h"
 #include "pic.h"
+#include "../kernel/kernel.h"
 
 isr_t interrupt_handlers[256];
 isr_exception_callback isr_exception_callbacks[MAX_ISR_EXCEPTION_CALLBACK];

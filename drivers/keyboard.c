@@ -2,9 +2,12 @@
 #include "../hdep/isr.h"
 #include "../libc/stdlib.h"
 #include "keyboard.h"
+#include "../kernel/kernel.h"
 
 keyboard_callback keyboard_callbacks[MAX_KEYBOARD_CALLBACK];
 u8 keyboard_callback_count = 0;
+
+_init_driver_attrib kernel_init_fun_t init_keyboard_t = &init_keyboard;
 
 const char* scancode_name[] = { "ERROR", "Esc", "1", "2", "3", "4", "5", "6", 
     "7", "8", "9", "0", "-", "=", "Backspace", "Tab", "Q", "W", "E", 
