@@ -8,6 +8,8 @@ isr_t interrupt_handlers[256];
 isr_exception_callback isr_exception_callbacks[MAX_ISR_EXCEPTION_CALLBACK];
 u8 isr_exception_callback_count = 0;
 
+__init_driver__(isr_install, &isr_install, KERNEL_INIT_SYSTEM_PRIORITY)
+
 void isr_install() {
     set_idt_gate(0, (u32)isr0);
     set_idt_gate(1, (u32)isr1);
@@ -63,6 +65,8 @@ void isr_install() {
     set_idt_gate(47, (u32)irq15);
 
     set_idt();
+
+    enable_interrupts();
 }
 
 char *exception_messages[] = {

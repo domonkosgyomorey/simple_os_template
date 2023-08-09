@@ -74,3 +74,15 @@ void shell_command_handler(s8* msg){
         ts8025_print("\n");
     }
 }
+
+void shell_print_in_hex(s32 num){
+    char h[16] = {'0', '1', '2','3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
+    char buff[100];
+    for(s32 i = 0; i < 32; i+=4){
+        buff[i/4] = h[(num>>i)&0x0f];
+    }
+    str_reverse(buff);
+    shell_print("0x");
+    shell_print(buff);
+    shell_print("\n");
+}

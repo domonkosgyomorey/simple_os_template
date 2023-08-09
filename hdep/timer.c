@@ -8,7 +8,7 @@ u32 tick = 0;
 tick_callback tick_callbacks[MAX_TICK_CALLBACK];
 u8 tick_callbacks_count = 0;
 
-_init_driver_attrib kernel_init_fun_t pit_init_timer_t = &pit_init_timer;
+__init_driver__(pit_init_timer, &pit_init_timer, KERNEL_INIT_DRIVER_PRIORITY)
 
 s8 pit_add_tick_callback(tick_callback tick_cb){
     if(tick_callbacks_count<MAX_TICK_CALLBACK){

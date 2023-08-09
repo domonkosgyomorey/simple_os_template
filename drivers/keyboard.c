@@ -7,7 +7,7 @@
 keyboard_callback keyboard_callbacks[MAX_KEYBOARD_CALLBACK];
 u8 keyboard_callback_count = 0;
 
-_init_driver_attrib kernel_init_fun_t init_keyboard_t = &init_keyboard;
+__init_driver__(init_keyboard, &init_keyboard, KERNEL_INIT_DRIVER_PRIORITY)
 
 const char* scancode_name[] = { "ERROR", "Esc", "1", "2", "3", "4", "5", "6", 
     "7", "8", "9", "0", "-", "=", "Backspace", "Tab", "Q", "W", "E", 

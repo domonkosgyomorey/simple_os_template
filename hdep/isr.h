@@ -80,8 +80,11 @@ typedef struct {
    u32 eip, cs, eflags, useresp, ss;
 } registers_t;
 
+// setting up the isr, irq, idt and enable interrputs
 void isr_install();
+
 void isr_handler(registers_t r);
+// enable interrupt
 void enable_interrupts();
 
 typedef void (*isr_t)(registers_t);

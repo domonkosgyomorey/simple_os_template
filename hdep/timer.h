@@ -2,7 +2,6 @@
 #define TIMER_H
 
 #include "types.h"
-
 #define MAX_TICK_CALLBACK   32
 
 #define PIT_CHANNEL0        0x40
@@ -11,7 +10,7 @@
 #define PIT_MODE_COMMAND    0x43
 
 #define CLOCK_HZ            1193180
-#define PIT_DEFAULT_FREQUENCY 30
+#define PIT_DEFAULT_FREQUENCY 50
 
 typedef void (*tick_callback)(u32 tick);
 

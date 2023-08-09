@@ -17,5 +17,6 @@ typedef enum shell_command{
 
 void shell_key_callback(u8 letter, u8 scancode, const char* name);
 void shell_print(s8* msg);
+void shell_print_in_hex(s32 num);
 
 #endif

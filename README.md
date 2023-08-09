@@ -73,10 +73,16 @@ Probably in the future, I try put this OS in a docker env.
 
 ## How to register your driver init function:
 ```c
-// 1. You need to create a var to store your init function pointer
-// which type is kernel_init_fun_t
-// 2. and add your var the "_init_driver_attrib" attribute 
-_init_driver_attrib kernel_init_fun_t init_keyboard_t = &init_keyboard;
+// You need to use the __init_driver__ macro, to put you function
+// into the initialization process
+// Behid the scenes it use a struct, like this:
+/*
+typedef struct kernel_init_fun_s{
+    kernel_init_fun_t init_fun;
+    kernel_init_priority_t priority;
+} kernel_init_fun_s ;
+*/
+__init_driver__(init_keyboard, &init_keyboard, KERNEL_INIT_DRIVER_PRIORITY)
 
 // You need a function which is a kernel_init_fun_t type
 void init_keyboard() {

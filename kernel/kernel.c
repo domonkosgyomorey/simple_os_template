@@ -1,5 +1,4 @@
 #include "../shell/shell.h"
-#include "../hdep/isr.h"
 #include "../drivers/keyboard.h"
 #include "../hdep/timer.h"
 #include "../libc/string.h"
@@ -9,23 +8,13 @@
 
 u32 graphics_mode;
 
-void print_in_hex(int num){
-    char h[16] = {'0', '1', '2','3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
-    char buff[100];
-    for(int i = 0; i < 32; i+=4){
-        buff[i/4] = h[((num>>i)&0b1111)];
-    }
-    str_reverse(buff);
-    shell_print("0x");
-    shell_print(buff);
-    shell_print("\n");
-}
-
 void update(u32 frames){
-    for (u32 i = 0; i < GS320200_HEIGHT; i++){
-        for (u32 j = 0; j < GS320200_WIDTH; j++){
-            gs320200_draw_point(j, i, (~(i&j)-frames));
-        } 
+    if(graphics_mode==0x13){
+        for (u32 i = 0; i < GS320200_HEIGHT; i++){
+            for (u32 j = 0; j < GS320200_WIDTH; j++){
+                gs320200_draw_point(j, i, ~(i&j)-frames);
+            } 
+        }
     }
 }
 
@@ -33,14 +22,22 @@ extern void* __init_funcs;
 extern void* __init_funcs_end;
 
 void main() {
-    asm("mov %0, %%eax":"=r"(graphics_mode)::);
-    
-    isr_install();
-    enable_interrupts();
+    asm("mov %0, %%eax":"=r"(graphics_mode));
 
-    kernel_init_fun_t* fn_ptr = (kernel_init_fun_t*)&__init_funcs;
-    while((u32)fn_ptr-(u32)&__init_funcs_end){
-        (*fn_ptr++)();
+    u32 init_fn_size = ((u32)&__init_funcs_end-(u32)&__init_funcs)/sizeof(kernel_init_fun_s);
+    
+    kernel_init_fun_s* fn_ptr;
+    for(u32 i = 0; i < KERNEL_INIT_PRIORITY_COUNT; ++i){
+        u32 j = 0;
+        fn_ptr = (kernel_init_fun_s*)&__init_funcs;
+        while(j<init_fn_size){
+            if(fn_ptr->priority==i){
+                fn_ptr->init_fun();
+                shell_print_in_hex(fn_ptr->priority);
+            }
+            fn_ptr++;
+            j++;
+        }
     }
 
     if(add_keyboard_callback(&shell_key_callback)<0){
@@ -58,5 +55,5 @@ void main() {
             gs320200_draw_error(GS320200_RED);
         }
     }
- 
+    
 }
