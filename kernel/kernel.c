@@ -16,14 +16,38 @@ void update(u32 frames){
             } 
         }
     }
+    gs320200_draw_rect(0,0,20,20,GS320200_CYAN);
+    gs320200_swap_buffers();
 }
 
+void init_custom_callback(){
+    if(add_keyboard_callback(&shell_key_callback)<0){
+        if(graphics_mode==2){
+            shell_print("Failed to add a keyboard callback\n");
+        }
+    }
+
+    if(pit_add_tick_callback(&update)<0){
+        if(graphics_mode==2){
+            shell_print("Failed to add a tick callback\n");
+        }
+    }
+}
+
+// Pre-configured in the linker script
 extern void* __init_funcs;
 extern void* __init_funcs_end;
 
 void main() {
+    // Get the graphics mode, from a pre-configured space
     asm("mov %0, %%eax":"=r"(graphics_mode));
 
+    kernel_run_init_functions();
+
+    init_custom_callback();
+}
+
+void kernel_run_init_functions(){
     u32 init_fn_size = ((u32)&__init_funcs_end-(u32)&__init_funcs)/sizeof(kernel_init_fun_s);
     
     kernel_init_fun_s* fn_ptr;
@@ -33,27 +57,9 @@ void main() {
         while(j<init_fn_size){
             if(fn_ptr->priority==i){
                 fn_ptr->init_fun();
-                shell_print_in_hex(fn_ptr->priority);
             }
             fn_ptr++;
             j++;
         }
     }
-
-    if(add_keyboard_callback(&shell_key_callback)<0){
-        if(graphics_mode==2){
-            shell_print("Failed to add a keyboard callback\n");
-        }else{
-            gs320200_draw_error(GS320200_RED);
-        }
-    }
-
-    if(pit_add_tick_callback(&update)<0){
-        if(graphics_mode==2){
-            shell_print("Failed to add a tick callback\n");
-        }else{
-            gs320200_draw_error(GS320200_RED);
-        }
-    }
-    
 }

@@ -26,8 +26,11 @@
 #define GS320200_YELLOW             14
 #define GS320200_WHITE              15
 
-void gs320200_draw_point(u32 x, u32 y, u32 color);
+void gs320200_draw_point(u32 x, u32 y, u8 color);
 void gs320200_draw_error(u32 color);
+void gs320200_draw_rect(u32 x, u32 y, u32 width, u32 height, u8 color);
+void gs320200_swap_buffers();
 u32 gs320200_get_offset(u32 x, u32 y);
+
 
 #endif // GS320240_H

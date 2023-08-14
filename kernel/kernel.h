@@ -21,4 +21,6 @@ typedef struct kernel_init_fun_s{
 #define __init_driver__(init_fun_name, init_fun_ptr, _priority) \
     _init_driver_attrib kernel_init_fun_s init_fun_name##_s = (kernel_init_fun_s){.init_fun=init_fun_ptr, .priority=_priority};
 
+void kernel_run_init_functions();
+
 #endif // KERNEL_H

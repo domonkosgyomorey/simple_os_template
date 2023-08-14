@@ -22,4 +22,5 @@ SECTIONS {
         KEEP(*(.init_fun))
     }
     __init_funcs_end = .;
+
 }
