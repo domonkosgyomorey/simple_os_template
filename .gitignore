@@ -2,3 +2,4 @@
 *.bin
 os_img
 .vscode
+build
