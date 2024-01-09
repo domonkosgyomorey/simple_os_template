@@ -1,31 +1,37 @@
-C_SOURCES = $(wildcard kernel/*.c drivers/*.c hdep/*.c libc/*.c shell/*.c)
-HEADERS = $(wildcard kernel/*.h drivers/*.h hdep/*.h libc/*.h shell/*.h)
-OBJ = ${C_SOURCES:.c=.o hdep/interrupt.o} 
+SRC_ROOT = src
+INCLUDE_ROOT = include
+BUILD_DIR = build
+C_SOURCES = $(wildcard $(SRC_ROOT)/boot/*.c $(SRC_ROOT)/drivers/*.c $(SRC_ROOT)/kernel/*.c $(SRC_ROOT)/libc/*.c $(SRC_ROOT)/shell/*.c)
+HEADERS = $(wildcard $(INCLUDE_ROOT)/*.h $(INCLUDE_ROOT)/boot/*.h $(INCLUDE_ROOT)/kernel/*.h $(INCLUDE_ROOT)/drivers/*.h $(INCLUDE_ROOT)/libc/*.h $(INCLUDE_ROOT)/shell/*.h)
+OBJ = ${C_SOURCES:$(SRC_ROOT)/%.c=$(BUILD_DIR)/%.o} $(BUILD_DIR)/kernel/interrupt.o 
 
 CC = gcc
-CFLAGS = 	-m32 -nostdlib -nostdinc -fno-builtin -pipe  \
-			-Wall -Wextra -Werror -fno-pic \
-		 	-Werror=implicit-function-declaration \
-		 	-fcf-protection -nostartfiles -nodefaultlibs
+CFLAGS = -m32 -nostdlib -nostdinc -fno-builtin -pipe \
+		 -Wall -Wextra -Werror -fno-pic \
+		 -Werror=implicit-function-declaration \
+		 -fcf-protection -nostartfiles -nodefaultlibs \
+		 -I$(INCLUDE_ROOT)
 
-os_img: boot/boot_main.bin kernel.bin
+os_img: $(BUILD_DIR)/boot/boot_main.bin $(BUILD_DIR)/kernel.bin
 	cat $^ > os_img
 
-kernel.bin: boot/kernel_entry.o ${OBJ}
+$(BUILD_DIR)/kernel.bin: $(BUILD_DIR)/boot/kernel_entry.o ${OBJ}
 	ld -m elf_i386 -Map=output.map --oformat binary -T linker.ld -o $@ $^ 
 
 run: os_img
 	qemu-system-i386 -fda os_img
 
-%.o: %.c ${HEADERS}
+$(BUILD_DIR)/%.o: $(SRC_ROOT)/%.c ${HEADERS}
+	mkdir -p $(dir $@)
 	${CC} ${CFLAGS} -ffreestanding -c $< -o $@
 
-%.o: %.asm
+$(BUILD_DIR)/%.o: $(SRC_ROOT)/%.asm
+	mkdir -p $(dir $@)
 	nasm $< -f elf -o $@
 
-%.bin: %.asm
+$(BUILD_DIR)/%.bin: $(SRC_ROOT)/%.asm
+	mkdir -p $(dir $@)
 	nasm $< -f bin -o $@
 
 clean:
-	rm -rf *.bin *.dis *.o *.elf
-	rm -rf kernel/*.o boot/*.bin drivers/*.o boot/*.o hdep/*.o libc/*.o shell/*.o
+	rm -rfv build/*
