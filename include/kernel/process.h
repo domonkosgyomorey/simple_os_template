@@ -20,4 +20,9 @@ typedef struct process_t{
     int cpu_time;   // cpu quantum
 } process_t;
 
+// TODO: linked list
+// TODO: quque for scheduler
+// TODO: round robin scheduler
+// TODO: time sliceing with PIT tick
+
 #endif // PROCESS_H
