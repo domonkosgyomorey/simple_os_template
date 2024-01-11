@@ -1,6 +1,8 @@
 #ifndef KERNEL_H
 #define KERNEL_H
 
+#define KERNEL_START_MEMORY 0x1000
+
 #define _init_driver_attrib __attribute__((section(".init_fun"))) 
 
 typedef enum kernel_init_priority_t{

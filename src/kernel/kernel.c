@@ -41,10 +41,11 @@ extern void* __init_funcs_end;
 void kernel_entry() {
     // Get the graphics mode, from a pre-configured space
     asm("mov %0, %%eax":"=r"(graphics_mode));
-
+    
     kernel_run_init_functions();
 
     init_custom_callback();
+
 }
 
 void kernel_run_init_functions(){

@@ -23,6 +23,6 @@ typedef struct process_t{
 // TODO: linked list
 // TODO: quque for scheduler
 // TODO: round robin scheduler
-// TODO: time sliceing with PIT tick
+// TODO: time slices for scheduler
 
 #endif // PROCESS_H
