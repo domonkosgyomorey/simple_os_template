@@ -11,9 +11,8 @@
     mov [BOOT_DRIVE], dl
     mov bp, 0x9000
     mov sp, bp
-
-    mov bx, KERNEL_OFFSET       ; Read from disk and store in 0x1000
-    mov dh, 31
+    mov bx, KERNEL_OFFSET       ; Read from disk and store at 0x1000
+    mov dh, 50                  ; Number of sector what I read
     mov dl, [BOOT_DRIVE]
     call disk_load
 

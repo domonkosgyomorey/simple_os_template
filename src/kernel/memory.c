@@ -94,6 +94,6 @@ void buddy_free(void* ptr){
         block->right = NULL;
         block->size *= 2;
     
-        block = (unsigned char*)block - sizeof(memory_block_t) == (unsigned char*)root->left ? root : (memory_block_t*)((unsigned char*)block - sizeof(memory_block_t));
+        block = ((unsigned char*)block - sizeof(memory_block_t)) == ((unsigned char*)root->left) ? root : (memory_block_t*)((unsigned char*)block - sizeof(memory_block_t));
     }
 }

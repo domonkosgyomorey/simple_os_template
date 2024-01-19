@@ -6,7 +6,7 @@ HEADERS = $(wildcard $(INCLUDE_ROOT)/*.h $(INCLUDE_ROOT)/boot/*.h $(INCLUDE_ROOT
 OBJ = ${C_SOURCES:$(SRC_ROOT)/%.c=$(BUILD_DIR)/%.o} $(BUILD_DIR)/kernel/interrupt.o 
 
 CC = gcc
-CFLAGS = -m32 -nostdlib -nostdinc -fno-builtin -pipe \
+CFLAGS = -m32 -g -nostdlib -nostdinc -fno-builtin -pipe \
 		 -Wall -Wextra -Werror -fno-pic \
 		 -Werror=implicit-function-declaration \
 		 -fcf-protection -nostartfiles -nodefaultlibs \

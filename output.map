@@ -8,7 +8,7 @@ Linker script and memory map
 
                 0x0000000000001000                . = 0x1000
 
-.text           0x0000000000001000     0x1e19
+.text           0x0000000000001000     0x1eb9
  *(.text)
  .text          0x0000000000001000        0x7 build/boot/kernel_entry.o
  .text          0x0000000000001007       0xef build/drivers/gs320200.o
@@ -40,222 +40,223 @@ Linker script and memory map
                 0x0000000000001ae4                irq_handler
                 0x0000000000001b58                enable_interrupts
                 0x0000000000001b63                add_isr_exception_callback
- .text          0x0000000000001ba0      0x16f build/kernel/kernel.o
+ .text          0x0000000000001ba0      0x20b build/kernel/kernel.o
                 0x0000000000001ba0                update
                 0x0000000000001c23                init_custom_callback
                 0x0000000000001c8c                kernel_entry
-                0x0000000000001caa                kernel_run_init_functions
- .text          0x0000000000001d0f      0x2b7 build/kernel/memory.o
-                0x0000000000001d0f                initialize_memory
-                0x0000000000001d4c                split_memory_block_t
-                0x0000000000001dec                find_free_memory_block_t
-                0x0000000000001e9f                buddy_allocate
-                0x0000000000001eff                buddy_free
- .text          0x0000000000001fc6      0x102 build/kernel/pic.o
-                0x0000000000001fc6                pic_end_of_interrput
-                0x0000000000002009                pic_remap
- .text          0x00000000000020c8       0x8e build/kernel/ports.o
-                0x00000000000020c8                inb
-                0x00000000000020e9                outb
-                0x000000000000210e                inw
-                0x0000000000002131                outw
- .text          0x0000000000002156       0xf5 build/kernel/timer.o
-                0x0000000000002156                pit_add_tick_callback
-                0x00000000000021e3                pit_init_timer
- .text          0x000000000000224b       0x72 build/libc/stdlib.o
-                0x000000000000224b                memncpy
-                0x000000000000228f                memset
- .text          0x00000000000022bd      0x5ea build/libc/string.o
-                0x00000000000022bd                int_to_ascii
-                0x0000000000002377                str_reverse
-                0x00000000000023e5                str_len
-                0x0000000000002410                str_append
-                0x000000000000244d                str_backspace
-                0x000000000000247c                str_cmp
-                0x00000000000024e3                str_equ
-                0x0000000000002552                str_n_cmp
-                0x00000000000025c4                str_n_equ
-                0x000000000000263e                str_count_c
-                0x000000000000268a                str_trim
-                0x0000000000002711                str_cpy
-                0x000000000000275a                str_n_cpy
-                0x00000000000027ae                str_cut_word
-                0x0000000000002825                str_cut_word_n
- .text          0x00000000000028a7      0x367 build/shell/shell.o
-                0x00000000000028a7                shell_print
-                0x00000000000028c2                shell_key_callback
-                0x00000000000029c7                shell_command_handler
-                0x0000000000002b67                shell_print_in_hex
- *fill*         0x0000000000002c0e        0x2 
- .text          0x0000000000002c10      0x209 build/kernel/interrupt.o
-                0x0000000000002c5a                isr0
-                0x0000000000002c61                isr1
-                0x0000000000002c68                isr2
-                0x0000000000002c6f                isr3
-                0x0000000000002c76                isr4
-                0x0000000000002c7d                isr5
-                0x0000000000002c84                isr6
-                0x0000000000002c8b                isr7
-                0x0000000000002c95                isr8
-                0x0000000000002c9d                isr9
-                0x0000000000002ca7                isr10
-                0x0000000000002caf                isr11
-                0x0000000000002cb7                isr12
-                0x0000000000002cbf                isr13
-                0x0000000000002cc7                isr14
-                0x0000000000002ccf                isr15
-                0x0000000000002cd9                isr16
-                0x0000000000002ce3                isr17
-                0x0000000000002ced                isr18
-                0x0000000000002cf7                isr19
-                0x0000000000002d01                isr20
-                0x0000000000002d0b                isr21
-                0x0000000000002d15                isr22
-                0x0000000000002d1f                isr23
-                0x0000000000002d29                isr24
-                0x0000000000002d33                isr25
-                0x0000000000002d3d                isr26
-                0x0000000000002d47                isr27
-                0x0000000000002d51                isr28
-                0x0000000000002d5b                isr29
-                0x0000000000002d65                isr30
-                0x0000000000002d6f                isr31
-                0x0000000000002d79                irq0
-                0x0000000000002d83                irq1
-                0x0000000000002d8d                irq2
-                0x0000000000002d97                irq3
-                0x0000000000002da1                irq4
-                0x0000000000002dab                irq5
-                0x0000000000002db5                irq6
-                0x0000000000002dbf                irq7
-                0x0000000000002dc9                irq8
-                0x0000000000002dd3                irq9
-                0x0000000000002ddd                irq10
-                0x0000000000002de7                irq11
-                0x0000000000002df1                irq12
-                0x0000000000002dfb                irq13
-                0x0000000000002e05                irq14
-                0x0000000000002e0f                irq15
+                0x0000000000001d46                kernel_run_init_functions
+ .text          0x0000000000001dab      0x2b7 build/kernel/memory.o
+                0x0000000000001dab                initialize_memory
+                0x0000000000001de8                split_memory_block_t
+                0x0000000000001e88                find_free_memory_block_t
+                0x0000000000001f3b                buddy_allocate
+                0x0000000000001f9b                buddy_free
+ .text          0x0000000000002062      0x102 build/kernel/pic.o
+                0x0000000000002062                pic_end_of_interrput
+                0x00000000000020a5                pic_remap
+ .text          0x0000000000002164       0x8e build/kernel/ports.o
+                0x0000000000002164                inb
+                0x0000000000002185                outb
+                0x00000000000021aa                inw
+                0x00000000000021cd                outw
+ .text          0x00000000000021f2       0xf5 build/kernel/timer.o
+                0x00000000000021f2                pit_add_tick_callback
+                0x000000000000227f                pit_init_timer
+ .text          0x00000000000022e7       0x72 build/libc/stdlib.o
+                0x00000000000022e7                memncpy
+                0x000000000000232b                memset
+ .text          0x0000000000002359      0x5ea build/libc/string.o
+                0x0000000000002359                int_to_ascii
+                0x0000000000002413                str_reverse
+                0x0000000000002481                str_len
+                0x00000000000024ac                str_append
+                0x00000000000024e9                str_backspace
+                0x0000000000002518                str_cmp
+                0x000000000000257f                str_equ
+                0x00000000000025ee                str_n_cmp
+                0x0000000000002660                str_n_equ
+                0x00000000000026da                str_count_c
+                0x0000000000002726                str_trim
+                0x00000000000027ad                str_cpy
+                0x00000000000027f6                str_n_cpy
+                0x000000000000284a                str_cut_word
+                0x00000000000028c1                str_cut_word_n
+ .text          0x0000000000002943      0x367 build/shell/shell.o
+                0x0000000000002943                shell_print
+                0x000000000000295e                shell_key_callback
+                0x0000000000002a63                shell_command_handler
+                0x0000000000002c03                shell_print_in_hex
+ *fill*         0x0000000000002caa        0x6 
+ .text          0x0000000000002cb0      0x209 build/kernel/interrupt.o
+                0x0000000000002cfa                isr0
+                0x0000000000002d01                isr1
+                0x0000000000002d08                isr2
+                0x0000000000002d0f                isr3
+                0x0000000000002d16                isr4
+                0x0000000000002d1d                isr5
+                0x0000000000002d24                isr6
+                0x0000000000002d2b                isr7
+                0x0000000000002d35                isr8
+                0x0000000000002d3d                isr9
+                0x0000000000002d47                isr10
+                0x0000000000002d4f                isr11
+                0x0000000000002d57                isr12
+                0x0000000000002d5f                isr13
+                0x0000000000002d67                isr14
+                0x0000000000002d6f                isr15
+                0x0000000000002d79                isr16
+                0x0000000000002d83                isr17
+                0x0000000000002d8d                isr18
+                0x0000000000002d97                isr19
+                0x0000000000002da1                isr20
+                0x0000000000002dab                isr21
+                0x0000000000002db5                isr22
+                0x0000000000002dbf                isr23
+                0x0000000000002dc9                isr24
+                0x0000000000002dd3                isr25
+                0x0000000000002ddd                isr26
+                0x0000000000002de7                isr27
+                0x0000000000002df1                isr28
+                0x0000000000002dfb                isr29
+                0x0000000000002e05                isr30
+                0x0000000000002e0f                isr31
+                0x0000000000002e19                irq0
+                0x0000000000002e23                irq1
+                0x0000000000002e2d                irq2
+                0x0000000000002e37                irq3
+                0x0000000000002e41                irq4
+                0x0000000000002e4b                irq5
+                0x0000000000002e55                irq6
+                0x0000000000002e5f                irq7
+                0x0000000000002e69                irq8
+                0x0000000000002e73                irq9
+                0x0000000000002e7d                irq10
+                0x0000000000002e87                irq11
+                0x0000000000002e91                irq12
+                0x0000000000002e9b                irq13
+                0x0000000000002ea5                irq14
+                0x0000000000002eaf                irq15
 
 .note.gnu.property
-                0x0000000000002e1c      0x16c
+                0x0000000000002ebc      0x16c
  .note.gnu.property
-                0x0000000000002e1c       0x1c build/drivers/gs320200.o
+                0x0000000000002ebc       0x1c build/drivers/gs320200.o
  .note.gnu.property
-                0x0000000000002e38       0x1c build/drivers/keyboard.o
+                0x0000000000002ed8       0x1c build/drivers/keyboard.o
  .note.gnu.property
-                0x0000000000002e54       0x1c build/drivers/ts8025.o
+                0x0000000000002ef4       0x1c build/drivers/ts8025.o
  .note.gnu.property
-                0x0000000000002e70       0x1c build/kernel/idt.o
+                0x0000000000002f10       0x1c build/kernel/idt.o
  .note.gnu.property
-                0x0000000000002e8c       0x1c build/kernel/isr.o
+                0x0000000000002f2c       0x1c build/kernel/isr.o
  .note.gnu.property
-                0x0000000000002ea8       0x1c build/kernel/kernel.o
+                0x0000000000002f48       0x1c build/kernel/kernel.o
  .note.gnu.property
-                0x0000000000002ec4       0x1c build/kernel/memory.o
+                0x0000000000002f64       0x1c build/kernel/memory.o
  .note.gnu.property
-                0x0000000000002ee0       0x1c build/kernel/pic.o
+                0x0000000000002f80       0x1c build/kernel/pic.o
  .note.gnu.property
-                0x0000000000002efc       0x1c build/kernel/ports.o
+                0x0000000000002f9c       0x1c build/kernel/ports.o
  .note.gnu.property
-                0x0000000000002f18       0x1c build/kernel/timer.o
+                0x0000000000002fb8       0x1c build/kernel/timer.o
  .note.gnu.property
-                0x0000000000002f34       0x1c build/libc/stdlib.o
+                0x0000000000002fd4       0x1c build/libc/stdlib.o
  .note.gnu.property
-                0x0000000000002f50       0x1c build/libc/string.o
+                0x0000000000002ff0       0x1c build/libc/string.o
  .note.gnu.property
-                0x0000000000002f6c       0x1c build/shell/shell.o
+                0x000000000000300c       0x1c build/shell/shell.o
 
-.eh_frame       0x0000000000002f88      0x948
- .eh_frame      0x0000000000002f88       0xa0 build/drivers/gs320200.o
- .eh_frame      0x0000000000003028       0x78 build/drivers/keyboard.o
- .eh_frame      0x00000000000030a0      0x15c build/drivers/ts8025.o
- .eh_frame      0x00000000000031fc       0x58 build/kernel/idt.o
- .eh_frame      0x0000000000003254       0xd8 build/kernel/isr.o
- .eh_frame      0x000000000000332c       0x98 build/kernel/kernel.o
- .eh_frame      0x00000000000033c4       0xb8 build/kernel/memory.o
- .eh_frame      0x000000000000347c       0x58 build/kernel/pic.o
- .eh_frame      0x00000000000034d4       0x98 build/kernel/ports.o
- .eh_frame      0x000000000000356c       0x78 build/kernel/timer.o
- .eh_frame      0x00000000000035e4       0x58 build/libc/stdlib.o
- .eh_frame      0x000000000000363c      0x1fc build/libc/string.o
- .eh_frame      0x0000000000003838       0x98 build/shell/shell.o
+.eh_frame       0x0000000000003028      0x948
+ .eh_frame      0x0000000000003028       0xa0 build/drivers/gs320200.o
+ .eh_frame      0x00000000000030c8       0x78 build/drivers/keyboard.o
+ .eh_frame      0x0000000000003140      0x15c build/drivers/ts8025.o
+ .eh_frame      0x000000000000329c       0x58 build/kernel/idt.o
+ .eh_frame      0x00000000000032f4       0xd8 build/kernel/isr.o
+ .eh_frame      0x00000000000033cc       0x98 build/kernel/kernel.o
+ .eh_frame      0x0000000000003464       0xb8 build/kernel/memory.o
+ .eh_frame      0x000000000000351c       0x58 build/kernel/pic.o
+ .eh_frame      0x0000000000003574       0x98 build/kernel/ports.o
+ .eh_frame      0x000000000000360c       0x78 build/kernel/timer.o
+ .eh_frame      0x0000000000003684       0x58 build/libc/stdlib.o
+ .eh_frame      0x00000000000036dc      0x1fc build/libc/string.o
+ .eh_frame      0x00000000000038d8       0x98 build/shell/shell.o
 
-.rodata         0x00000000000038e0      0x436
- .rodata        0x00000000000038e0      0x1d9 build/drivers/keyboard.o
-                0x0000000000003a60                scancode_ascii
- *fill*         0x0000000000003ab9        0x3 
- .rodata        0x0000000000003abc      0x198 build/kernel/isr.o
- .rodata        0x0000000000003c54       0x43 build/kernel/kernel.o
- *fill*         0x0000000000003c97        0x9 
- .rodata        0x0000000000003ca0       0x76 build/shell/shell.o
-                0x0000000000003ca0                shell_commands
+.rodata         0x0000000000003980      0x456
+ .rodata        0x0000000000003980      0x1d9 build/drivers/keyboard.o
+                0x0000000000003b00                scancode_ascii
+ *fill*         0x0000000000003b59        0x3 
+ .rodata        0x0000000000003b5c      0x198 build/kernel/isr.o
+ .rodata        0x0000000000003cf4       0x53 build/kernel/kernel.o
+ *fill*         0x0000000000003d47       0x19 
+ .rodata        0x0000000000003d60       0x76 build/shell/shell.o
+                0x0000000000003d60                shell_commands
 
-.data           0x0000000000003d20      0x220
+.data           0x0000000000003de0      0x220
  *(.data)
- .data          0x0000000000003d20        0x4 build/drivers/gs320200.o
-                0x0000000000003d20                gs320200_back_buffer
- *fill*         0x0000000000003d24       0x1c 
- .data          0x0000000000003d40      0x164 build/drivers/keyboard.o
-                0x0000000000003d40                scancode_name
- .data          0x0000000000003ea4        0x0 build/drivers/ts8025.o
- .data          0x0000000000003ea4        0x0 build/kernel/idt.o
- *fill*         0x0000000000003ea4       0x1c 
- .data          0x0000000000003ec0       0x80 build/kernel/isr.o
-                0x0000000000003ec0                exception_messages
- .data          0x0000000000003f40        0x0 build/kernel/kernel.o
- .data          0x0000000000003f40        0x0 build/kernel/memory.o
- .data          0x0000000000003f40        0x0 build/kernel/pic.o
- .data          0x0000000000003f40        0x0 build/kernel/ports.o
- .data          0x0000000000003f40        0x0 build/kernel/timer.o
- .data          0x0000000000003f40        0x0 build/libc/stdlib.o
- .data          0x0000000000003f40        0x0 build/libc/string.o
- .data          0x0000000000003f40        0x0 build/shell/shell.o
+ .data          0x0000000000003de0        0x4 build/drivers/gs320200.o
+                0x0000000000003de0                gs320200_back_buffer
+ *fill*         0x0000000000003de4       0x1c 
+ .data          0x0000000000003e00      0x164 build/drivers/keyboard.o
+                0x0000000000003e00                scancode_name
+ .data          0x0000000000003f64        0x0 build/drivers/ts8025.o
+ .data          0x0000000000003f64        0x0 build/kernel/idt.o
+ *fill*         0x0000000000003f64       0x1c 
+ .data          0x0000000000003f80       0x80 build/kernel/isr.o
+                0x0000000000003f80                exception_messages
+ .data          0x0000000000004000        0x0 build/kernel/kernel.o
+ .data          0x0000000000004000        0x0 build/kernel/memory.o
+ .data          0x0000000000004000        0x0 build/kernel/pic.o
+ .data          0x0000000000004000        0x0 build/kernel/ports.o
+ .data          0x0000000000004000        0x0 build/kernel/timer.o
+ .data          0x0000000000004000        0x0 build/libc/stdlib.o
+ .data          0x0000000000004000        0x0 build/libc/string.o
+ .data          0x0000000000004000        0x0 build/shell/shell.o
 
-.bss            0x0000000000003f40      0xf40
+.bss            0x0000000000004000     0x1f80
  *(.bss)
- .bss           0x0000000000003f40        0x0 build/drivers/gs320200.o
- .bss           0x0000000000003f40       0x81 build/drivers/keyboard.o
-                0x0000000000003f40                keyboard_callbacks
-                0x0000000000003fc0                keyboard_callback_count
- .bss           0x0000000000003fc1        0x0 build/drivers/ts8025.o
- *fill*         0x0000000000003fc1       0x1f 
- .bss           0x0000000000003fe0      0x806 build/kernel/idt.o
-                0x0000000000003fe0                idt
-                0x00000000000047e0                idt_reg
- *fill*         0x00000000000047e6       0x1a 
- .bss           0x0000000000004800      0x481 build/kernel/isr.o
-                0x0000000000004800                interrupt_handlers
-                0x0000000000004c00                isr_exception_callbacks
-                0x0000000000004c80                isr_exception_callback_count
- *fill*         0x0000000000004c81        0x3 
- .bss           0x0000000000004c84        0x4 build/kernel/kernel.o
-                0x0000000000004c84                graphics_mode
- .bss           0x0000000000004c88        0x4 build/kernel/memory.o
-                0x0000000000004c88                root
- .bss           0x0000000000004c8c        0x0 build/kernel/pic.o
- .bss           0x0000000000004c8c        0x0 build/kernel/ports.o
- *fill*         0x0000000000004c8c       0x14 
- .bss           0x0000000000004ca0       0xa1 build/kernel/timer.o
-                0x0000000000004ca0                tick
-                0x0000000000004cc0                tick_callbacks
-                0x0000000000004d40                tick_callbacks_count
- .bss           0x0000000000004d41        0x0 build/libc/stdlib.o
- .bss           0x0000000000004d41        0x0 build/libc/string.o
+ .bss           0x0000000000004000        0x0 build/drivers/gs320200.o
+ .bss           0x0000000000004000       0x81 build/drivers/keyboard.o
+                0x0000000000004000                keyboard_callbacks
+                0x0000000000004080                keyboard_callback_count
+ .bss           0x0000000000004081        0x0 build/drivers/ts8025.o
+ *fill*         0x0000000000004081       0x1f 
+ .bss           0x00000000000040a0      0x806 build/kernel/idt.o
+                0x00000000000040a0                idt
+                0x00000000000048a0                idt_reg
+ *fill*         0x00000000000048a6       0x1a 
+ .bss           0x00000000000048c0      0x481 build/kernel/isr.o
+                0x00000000000048c0                interrupt_handlers
+                0x0000000000004cc0                isr_exception_callbacks
+                0x0000000000004d40                isr_exception_callback_count
  *fill*         0x0000000000004d41       0x1f 
- .bss           0x0000000000004d60      0x120 build/shell/shell.o
-                0x0000000000004d60                line_len
-                0x0000000000004e80                __init_funcs = .
+ .bss           0x0000000000004d60     0x1020 build/kernel/kernel.o
+                0x0000000000004d60                graphics_mode
+                0x0000000000004d80                memory
+ .bss           0x0000000000005d80        0x4 build/kernel/memory.o
+                0x0000000000005d80                root
+ .bss           0x0000000000005d84        0x0 build/kernel/pic.o
+ .bss           0x0000000000005d84        0x0 build/kernel/ports.o
+ *fill*         0x0000000000005d84       0x1c 
+ .bss           0x0000000000005da0       0xa1 build/kernel/timer.o
+                0x0000000000005da0                tick
+                0x0000000000005dc0                tick_callbacks
+                0x0000000000005e40                tick_callbacks_count
+ .bss           0x0000000000005e41        0x0 build/libc/stdlib.o
+ .bss           0x0000000000005e41        0x0 build/libc/string.o
+ *fill*         0x0000000000005e41       0x1f 
+ .bss           0x0000000000005e60      0x120 build/shell/shell.o
+                0x0000000000005e60                line_len
+                0x0000000000005f80                __init_funcs = .
 
-.init_fun       0x0000000000004e80       0x18
+.init_fun       0x0000000000005f80       0x18
  *(.init_fun)
- .init_fun      0x0000000000004e80        0x8 build/drivers/keyboard.o
-                0x0000000000004e80                init_keyboard_s
- .init_fun      0x0000000000004e88        0x8 build/kernel/isr.o
-                0x0000000000004e88                isr_install_s
- .init_fun      0x0000000000004e90        0x8 build/kernel/timer.o
-                0x0000000000004e90                pit_init_timer_s
-                0x0000000000004e98                __init_funcs_end = .
+ .init_fun      0x0000000000005f80        0x8 build/drivers/keyboard.o
+                0x0000000000005f80                init_keyboard_s
+ .init_fun      0x0000000000005f88        0x8 build/kernel/isr.o
+                0x0000000000005f88                isr_install_s
+ .init_fun      0x0000000000005f90        0x8 build/kernel/timer.o
+                0x0000000000005f90                pit_init_timer_s
+                0x0000000000005f98                __init_funcs_end = .
 LOAD build/boot/kernel_entry.o
 LOAD build/drivers/gs320200.o
 LOAD build/drivers/keyboard.o
@@ -272,6 +273,123 @@ LOAD build/libc/string.o
 LOAD build/shell/shell.o
 LOAD build/kernel/interrupt.o
 OUTPUT(build/kernel.bin binary)
+
+.debug_info     0x0000000000000000     0x2329
+ .debug_info    0x0000000000000000      0x1c9 build/drivers/gs320200.o
+ .debug_info    0x00000000000001c9      0x371 build/drivers/keyboard.o
+ .debug_info    0x000000000000053a      0x31f build/drivers/ts8025.o
+ .debug_info    0x0000000000000859      0x15c build/kernel/idt.o
+ .debug_info    0x00000000000009b5      0x669 build/kernel/isr.o
+ .debug_info    0x000000000000101e      0x375 build/kernel/kernel.o
+ .debug_info    0x0000000000001393      0x1d8 build/kernel/memory.o
+ .debug_info    0x000000000000156b       0xda build/kernel/pic.o
+ .debug_info    0x0000000000001645      0x130 build/kernel/ports.o
+ .debug_info    0x0000000000001775      0x32a build/kernel/timer.o
+ .debug_info    0x0000000000001a9f      0x127 build/libc/stdlib.o
+ .debug_info    0x0000000000001bc6      0x43f build/libc/string.o
+ .debug_info    0x0000000000002005      0x324 build/shell/shell.o
+
+.debug_abbrev   0x0000000000000000     0x106c
+ .debug_abbrev  0x0000000000000000      0x137 build/drivers/gs320200.o
+ .debug_abbrev  0x0000000000000137      0x1b3 build/drivers/keyboard.o
+ .debug_abbrev  0x00000000000002ea      0x182 build/drivers/ts8025.o
+ .debug_abbrev  0x000000000000046c      0x10a build/kernel/idt.o
+ .debug_abbrev  0x0000000000000576      0x1f2 build/kernel/isr.o
+ .debug_abbrev  0x0000000000000768      0x1c3 build/kernel/kernel.o
+ .debug_abbrev  0x000000000000092b      0x119 build/kernel/memory.o
+ .debug_abbrev  0x0000000000000a44       0xae build/kernel/pic.o
+ .debug_abbrev  0x0000000000000af2       0xb4 build/kernel/ports.o
+ .debug_abbrev  0x0000000000000ba6      0x199 build/kernel/timer.o
+ .debug_abbrev  0x0000000000000d3f       0xd1 build/libc/stdlib.o
+ .debug_abbrev  0x0000000000000e10       0xf4 build/libc/string.o
+ .debug_abbrev  0x0000000000000f04      0x168 build/shell/shell.o
+
+.debug_aranges  0x0000000000000000      0x1a0
+ .debug_aranges
+                0x0000000000000000       0x20 build/drivers/gs320200.o
+ .debug_aranges
+                0x0000000000000020       0x20 build/drivers/keyboard.o
+ .debug_aranges
+                0x0000000000000040       0x20 build/drivers/ts8025.o
+ .debug_aranges
+                0x0000000000000060       0x20 build/kernel/idt.o
+ .debug_aranges
+                0x0000000000000080       0x20 build/kernel/isr.o
+ .debug_aranges
+                0x00000000000000a0       0x20 build/kernel/kernel.o
+ .debug_aranges
+                0x00000000000000c0       0x20 build/kernel/memory.o
+ .debug_aranges
+                0x00000000000000e0       0x20 build/kernel/pic.o
+ .debug_aranges
+                0x0000000000000100       0x20 build/kernel/ports.o
+ .debug_aranges
+                0x0000000000000120       0x20 build/kernel/timer.o
+ .debug_aranges
+                0x0000000000000140       0x20 build/libc/stdlib.o
+ .debug_aranges
+                0x0000000000000160       0x20 build/libc/string.o
+ .debug_aranges
+                0x0000000000000180       0x20 build/shell/shell.o
+
+.debug_line     0x0000000000000000     0x10d6
+ .debug_line    0x0000000000000000       0xbe build/drivers/gs320200.o
+ .debug_line    0x00000000000000be       0xc9 build/drivers/keyboard.o
+ .debug_line    0x0000000000000187      0x252 build/drivers/ts8025.o
+ .debug_line    0x00000000000003d9       0x85 build/kernel/idt.o
+ .debug_line    0x000000000000045e      0x153 build/kernel/isr.o
+ .debug_line    0x00000000000005b1      0x151 build/kernel/kernel.o
+ .debug_line    0x0000000000000702      0x1f3 build/kernel/memory.o
+ .debug_line    0x00000000000008f5       0x86 build/kernel/pic.o
+ .debug_line    0x000000000000097b       0x7d build/kernel/ports.o
+ .debug_line    0x00000000000009f8       0xc8 build/kernel/timer.o
+ .debug_line    0x0000000000000ac0       0xb1 build/libc/stdlib.o
+ .debug_line    0x0000000000000b71      0x3d4 build/libc/string.o
+ .debug_line    0x0000000000000f45      0x191 build/shell/shell.o
+
+.debug_str      0x0000000000000000     0x19b6
+ .debug_str     0x0000000000000000      0x177 build/drivers/gs320200.o
+ .debug_str     0x0000000000000177      0x2c0 build/drivers/keyboard.o
+ .debug_str     0x0000000000000437      0x1cb build/drivers/ts8025.o
+ .debug_str     0x0000000000000602      0x14e build/kernel/idt.o
+ .debug_str     0x0000000000000750      0x41c build/kernel/isr.o
+ .debug_str     0x0000000000000b6c      0x31a build/kernel/kernel.o
+ .debug_str     0x0000000000000e86      0x1a3 build/kernel/memory.o
+ .debug_str     0x0000000000001029      0x112 build/kernel/pic.o
+ .debug_str     0x000000000000113b       0xfa build/kernel/ports.o
+ .debug_str     0x0000000000001235      0x291 build/kernel/timer.o
+ .debug_str     0x00000000000014c6      0x114 build/libc/stdlib.o
+ .debug_str     0x00000000000015da      0x196 build/libc/string.o
+ .debug_str     0x0000000000001770      0x246 build/shell/shell.o
+
+.debug_line_str
+                0x0000000000000000      0x977
+ .debug_line_str
+                0x0000000000000000       0xaf build/drivers/gs320200.o
+ .debug_line_str
+                0x00000000000000af       0xe7 build/drivers/keyboard.o
+ .debug_line_str
+                0x0000000000000196       0xc0 build/drivers/ts8025.o
+ .debug_line_str
+                0x0000000000000256       0xaa build/kernel/idt.o
+ .debug_line_str
+                0x0000000000000300       0xbf build/kernel/isr.o
+ .debug_line_str
+                0x00000000000003bf      0x103 build/kernel/kernel.o
+ .debug_line_str
+                0x00000000000004c2       0xb5 build/kernel/memory.o
+ .debug_line_str
+                0x0000000000000577       0xac build/kernel/pic.o
+ .debug_line_str
+                0x0000000000000623       0x9b build/kernel/ports.o
+ .debug_line_str
+                0x00000000000006be       0xc9 build/kernel/timer.o
+ .debug_line_str
+                0x0000000000000787       0x9a build/libc/stdlib.o
+ .debug_line_str
+                0x0000000000000821       0x85 build/libc/string.o
+ .debug_line_str
+                0x00000000000008a6       0xd1 build/shell/shell.o
 
 .comment        0x0000000000000000      0x23c
  .comment       0x0000000000000000       0x2c build/drivers/gs320200.o

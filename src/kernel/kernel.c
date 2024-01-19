@@ -5,6 +5,7 @@
 #include "drivers/gs320200.h"
 #include "libc/types.h"
 #include "kernel/kernel.h"
+#include "kernel/memory.h"
 
 u32 graphics_mode;
 
@@ -38,14 +39,29 @@ void init_custom_callback(){
 extern void* __init_funcs;
 extern void* __init_funcs_end;
 
+char* memory[1024];
+
 void kernel_entry() {
     // Get the graphics mode, from a pre-configured space
     asm("mov %0, %%eax":"=r"(graphics_mode));
-    
+
+    initialize_memory(memory, 1024);
+
+    int *num = (int*)buddy_allocate(sizeof(int));
+    *num = 13;
+
     kernel_run_init_functions();
 
     init_custom_callback();
 
+    shell_print("Value: ");
+    shell_print_in_hex(*num);
+    shell_print("\n");
+    shell_print("Ptr: ");
+    shell_print_in_hex((int)num);
+    shell_print("\n");
+
+    buddy_free(num);
 }
 
 void kernel_run_init_functions(){
