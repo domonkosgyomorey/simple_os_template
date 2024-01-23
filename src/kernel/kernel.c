@@ -39,7 +39,7 @@ void init_custom_callback(){
 extern void* __init_funcs;
 extern void* __init_funcs_end;
 
-char* memory[1024];
+char memory[1024];
 
 void kernel_entry() {
     // Get the graphics mode, from a pre-configured space
