@@ -1,7 +1,7 @@
 [org 0x7c00]
 
     mov ah, 0x0                     ; graphicsal settings
-    mov al, 0x2                     ; 0x13 for gaphics mode and 0x2 for text mode
+    mov al, 0x13                     ; 0x13 for gaphics mode and 0x2 for text mode
 
     mov [GRAPHICS_MODE], al         ; save graphics mode for later
     int 0x10                        ; change graphics
